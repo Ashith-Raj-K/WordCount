@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="text">Enter any text</label>
+    <input type="text" class="text" id="text" placeholder="enter text here">
+    <button onclick="wordCount()">Get Count</button>
+    <p id="result"></p>
+
+    <script>
+        let arr = []
+        const wrdCount = {}
+        let resultText = ''
+       function wordCount(){
+            let text = document.getElementById('text').value
+            arr = text.split(' ').map(word=>word.trim()).filter(word=>word !== '')
+            arr.forEach(element => {
+             wrdCount[element] = element.length   
+            });
+            console.log(wrdCount)
+            Object.entries(wrdCount).forEach(([key, value])=>{
+                resultText += `${key} - ${value}<br>`
+            })
+            document.getElementById('result').innerHTML = `Count of words in the text "${text}" are <br> ${resultText}`
+        }
+    </script>
+</body>
+</html>
